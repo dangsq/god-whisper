@@ -93,7 +93,7 @@ https://dangsq.github.io/god-whisper/
 
 ## 许可
 
-MIT
+All Rights Reserved
 
 ---
 
