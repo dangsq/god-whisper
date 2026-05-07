@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>渊</title>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@200;400;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/src/style.css">
+</head>
+<body>
+  <div id="container">
+    <!-- 背景眼睛 -->
+    <div id="eye">
+      <div id="iris"></div>
+    </div>
+
+    <!-- 主内容 -->
+    <div id="main">
+      <h1 id="title">渊</h1>
+      
+      <div id="oracle-container" class="hide">
+        <div id="oracle"></div>
+      </div>
+
+      <div id="response-container" class="hide">
+        <div id="divider">—</div>
+        <div id="response"></div>
+      </div>
+
+      <button id="btn">召 唤</button>
+      
+      <div id="status"></div>
+    </div>
+
+    <!-- API 设置 -->
+    <div id="settings" class="hide">
+      <div id="settings-box">
+        <h3>API 设置</h3>
+        <input id="api-key" type="password" placeholder="API Key">
+        <input id="api-url" type="text" placeholder="https://api.openai.com/v1">
+        <input id="api-model" type="text" placeholder="gpt-4">
+        <button id="save-btn">保存</button>
+      </div>
+    </div>
+  </div>
+
+  <script type="module" src="/src/main.js"></script>
+</body>
+</html>

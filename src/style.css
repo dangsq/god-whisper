@@ -1,0 +1,281 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  background: #000;
+  color: #fff;
+  font-family: 'Noto Serif SC', serif;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+/* ========== 眼睛 ========== */
+#eye {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 600px;
+  height: 300px;
+  border: 4px solid rgba(255, 255, 255, 0.1);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: eye-breathe 6s ease-in-out infinite;
+}
+
+#iris {
+  width: 120px;
+  height: 120px;
+  background: radial-gradient(circle, #fff 0%, #666 50%, #000 100%);
+  border-radius: 50%;
+  box-shadow: 0 0 80px rgba(255, 255, 255, 0.3);
+  animation: iris-pulse 4s ease-in-out infinite;
+}
+
+@keyframes eye-breathe {
+  0%, 100% { 
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 0.15;
+  }
+  50% { 
+    transform: translate(-50%, -50%) scale(1.05);
+    opacity: 0.25;
+  }
+}
+
+@keyframes iris-pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.15); }
+}
+
+/* ========== 主内容 ========== */
+#main {
+  position: relative;
+  z-index: 10;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 3rem;
+  padding: 2rem;
+}
+
+#title {
+  font-size: 8rem;
+  font-weight: 900;
+  letter-spacing: 0.3em;
+  text-shadow: 0 0 60px rgba(255, 255, 255, 0.5);
+  animation: title-glow 3s ease-in-out infinite;
+}
+
+@keyframes title-glow {
+  0%, 100% { 
+    text-shadow: 0 0 40px rgba(255, 255, 255, 0.3);
+  }
+  50% { 
+    text-shadow: 0 0 80px rgba(255, 255, 255, 0.6);
+  }
+}
+
+/* ========== 神谕 ========== */
+#oracle-container {
+  min-height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#oracle {
+  font-size: 1.5rem;
+  font-weight: 200;
+  line-height: 1.6;
+  text-align: center;
+  letter-spacing: 0.2em;
+  color: #fff;
+  text-shadow: 0 0 40px rgba(255, 255, 255, 0.8);
+  max-width: 600px;
+  word-break: keep-all;
+}
+
+/* ========== 回应 ========== */
+#response-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+  max-width: 700px;
+}
+
+#divider {
+  font-size: 1.5rem;
+  color: rgba(255, 255, 255, 0.3);
+  letter-spacing: 2em;
+}
+
+#response {
+  font-size: 1.3rem;
+  font-weight: 200;
+  line-height: 2;
+  text-align: center;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+/* ========== 按钮 ========== */
+#btn {
+  padding: 1.2rem 4rem;
+  background: transparent;
+  border: 3px solid #fff;
+  color: #fff;
+  font-family: 'Noto Serif SC', serif;
+  font-size: 1.2rem;
+  font-weight: 400;
+  letter-spacing: 1em;
+  cursor: pointer;
+  transition: all 0.4s ease;
+  text-indent: 1em;
+}
+
+#btn:hover {
+  background: #fff;
+  color: #000;
+  box-shadow: 0 0 60px rgba(255, 255, 255, 0.6);
+  transform: scale(1.05);
+}
+
+#btn.loading {
+  opacity: 0.4;
+  pointer-events: none;
+  animation: btn-pulse 1.5s ease-in-out infinite;
+}
+
+@keyframes btn-pulse {
+  0%, 100% { opacity: 0.3; }
+  50% { opacity: 0.6; }
+}
+
+/* ========== 状态 ========== */
+#status {
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.4);
+  letter-spacing: 0.3em;
+  min-height: 1.5rem;
+}
+
+/* ========== 隐藏 ========== */
+.hide {
+  display: none !important;
+}
+
+/* ========== 设置面板 ========== */
+#settings {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  background: rgba(0, 0, 0, 0.95);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#settings-box {
+  width: 90%;
+  max-width: 450px;
+  padding: 3rem 2.5rem;
+  background: #111;
+  border: 2px solid #333;
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+#settings-box h3 {
+  font-size: 1rem;
+  font-weight: 400;
+  letter-spacing: 0.5em;
+  text-align: center;
+  color: #999;
+  margin-bottom: 1rem;
+}
+
+#settings-box input {
+  width: 100%;
+  padding: 1rem 1.2rem;
+  background: #000;
+  border: 1px solid #333;
+  color: #fff;
+  font-size: 1rem;
+  outline: none;
+  transition: border-color 0.3s;
+}
+
+#settings-box input:focus {
+  border-color: #666;
+}
+
+#settings-box input::placeholder {
+  color: #444;
+}
+
+#save-btn {
+  padding: 1rem;
+  background: transparent;
+  border: 2px solid #fff;
+  color: #fff;
+  font-size: 1rem;
+  letter-spacing: 0.5em;
+  cursor: pointer;
+  transition: all 0.3s;
+  margin-top: 0.5rem;
+}
+
+#save-btn:hover {
+  background: #fff;
+  color: #000;
+}
+
+/* ========== 响应式 ========== */
+@media (max-width: 768px) {
+  #title {
+    font-size: 5rem;
+  }
+  
+  #oracle {
+    font-size: 1.8rem;
+  }
+  
+  #response {
+    font-size: 1.1rem;
+  }
+  
+  #eye {
+    width: 400px;
+    height: 200px;
+  }
+  
+  #iris {
+    width: 80px;
+    height: 80px;
+  }
+  
+  #btn {
+    padding: 1rem 3rem;
+    font-size: 1rem;
+  }
+}
