@@ -123,15 +123,6 @@ async function typeText(element, text, speed = 50) {
   }
 }
 
-function showSettings() {
-  $('#settings').classList.remove('hide')
-  $('#api-key').focus()
-}
-
-function hideSettings() {
-  $('#settings').classList.add('hide')
-}
-
 function setStatus(text) {
   $('#status').textContent = text
 }
@@ -140,11 +131,6 @@ function setStatus(text) {
 let isRunning = false
 
 async function invoke() {
-  if (!config.key) {
-    showSettings()
-    return
-  }
-
   if (isRunning) return
   isRunning = true
 
@@ -196,35 +182,8 @@ async function invoke() {
 // ========== 初始化 ==========
 function init() {
   loadConfig()
-
-  // 保存设置
-  $('#save-btn').addEventListener('click', () => {
-    const key = $('#api-key').value.trim()
-    if (!key) return
-
-    config.key = key
-    config.url = $('#api-url').value.trim() || 'https://api.openai.com/v1'
-    config.model = $('#api-model').value.trim() || 'gpt-4'
-    
-    saveConfig()
-    hideSettings()
-    setStatus('已就绪')
-  })
-
-  // 回车保存
-  $('#api-key').addEventListener('keydown', e => {
-    if (e.key === 'Enter') $('#save-btn').click()
-  })
-
-  // 召唤按钮
   $('#btn').addEventListener('click', invoke)
-
-  // 检查是否需要设置
-  if (!config.key) {
-    showSettings()
-  } else {
-    setStatus('已就绪')
-  }
+  setStatus('已就绪')
 }
 
 document.addEventListener('DOMContentLoaded', init)
