@@ -63,19 +63,6 @@ const RESPONSE_PROMPT = `你是一位作家/诗人。刚才，一个意象闪过
 const $ = s => document.querySelector(s)
 const sleep = ms => new Promise(r => setTimeout(r, ms))
 
-// ========== 加载/保存配置 ==========
-function loadConfig() {
-  config.key = import.meta.env.VITE_API_KEY || localStorage.getItem('k') || null
-  config.url = import.meta.env.VITE_API_BASE_URL || localStorage.getItem('u') || 'https://api.openai.com/v1'
-  config.model = import.meta.env.VITE_API_MODEL || localStorage.getItem('m') || 'gpt-4'
-}
-
-function saveConfig() {
-  localStorage.setItem('k', config.key)
-  localStorage.setItem('u', config.url)
-  localStorage.setItem('m', config.model)
-}
-
 // ========== API 调用 ==========
 async function callAPI(messages, temperature = 1.5) {
   const response = await fetch(`${config.url}/chat/completions`, {
@@ -181,7 +168,6 @@ async function invoke() {
 
 // ========== 初始化 ==========
 function init() {
-  loadConfig()
   $('#btn').addEventListener('click', invoke)
   setStatus('已就绪')
 }
